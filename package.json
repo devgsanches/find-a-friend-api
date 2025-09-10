@@ -18,10 +18,13 @@
   "homepage": "https://github.com/devgsanches/find-a-friend-api#readme",
   "description": "",
   "devDependencies": {
+    "@types/node": "^24.3.1",
+    "prisma": "^6.16.0",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2"
   },
   "dependencies": {
+    "@prisma/client": "^6.16.0",
     "fastify": "^5.6.0"
   }
 }
