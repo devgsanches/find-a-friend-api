@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "tsx --watch src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,12 @@
     "url": "https://github.com/devgsanches/find-a-friend-api/issues"
   },
   "homepage": "https://github.com/devgsanches/find-a-friend-api#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "fastify": "^5.6.0"
+  }
 }
