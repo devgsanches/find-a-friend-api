@@ -13,14 +13,39 @@ enum Role {
   USER
 }
 
-model User {
-  id        String   @id @default(uuid())
-  name      String
-  email     String   @unique
-  password  String   @default("USER")
-  role      String
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+model Pet {
+  id                  String   @id @default(uuid())
+  name                String
+  about               String
+  age                 Int
+  size                String
+  energyLevel         String      @map("energy_level")
+  levelOfIndependence String   @map("level_of_independence")
+  environment         String
+  city                String
+  organizationId      String   @map("organization_id")
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
 
-  @@map("users")
+  // relation with organization
+  organization Organization @relation(fields: [organizationId], references: [id])
+
+  @@map("pets")
+}
+
+model Organization {
+  id              String @id @default(uuid())
+  responsibleName String @map("responsible_name")
+  email           String @unique
+  passwordHash    String @map("password_hash")
+  cep             String
+  city            String
+  address         String
+  phone           String
+   createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
+  pets Pet[]
+
+  @@map("organizations")
 }

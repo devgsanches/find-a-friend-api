@@ -1,0 +1,33 @@
+# PETS
+POST http://localhost:3333/pets
+Content-Type: application/json
+
+{
+   "name": "Fabrícia",
+   "about": "Fabrícia é uma gata muito bonita e inteligente",
+   "age": 3,
+   "size": "Média",
+   "energy_level": "Baixa",
+   "level_of_independence": "Baixa (gosta de companhia sempre)",
+   "environment": "Ambiente amplo",
+   "city": "São Paulo",
+   "organization_id": "b747c692-626f-425d-8147-6b8b09e2adf2"
+}
+
+###
+
+# ORGANIZATIONS
+
+POST http://localhost:3333/organizations
+Content-Type: application/json
+
+{
+   "responsible_name": "ORG 1",
+   "email": "org1@gmail.com",
+   "password": "123456",
+   "cep": "1234567890",
+   "city": "São Paulo",
+   "address": "Rua das Flores, 123",
+   "phone": "1234567890"
+}
+   
