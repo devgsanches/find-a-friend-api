@@ -1,4 +1,4 @@
-import type { Prisma } from '../../../../generated/prisma'
+import type { Pet, Prisma } from '../../../../generated/prisma'
 import { prisma } from '../../../database/prisma'
 // import type { Prisma } from 'generated/prisma'
 import type { IPetsRepository } from '../interfaces/pets-repository'
@@ -10,5 +10,18 @@ export class PrismaPetsRepository implements IPetsRepository {
     })
 
     return pet
+  }
+
+  async findByCity(city: string) {
+    const pets = await prisma.pet.findMany({
+      where: {
+        city: {
+          contains: city,
+          mode: 'insensitive',
+        },
+      },
+    })
+
+    return pets
   }
 }

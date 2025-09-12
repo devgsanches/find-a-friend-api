@@ -3,14 +3,14 @@ POST http://localhost:3333/pets
 Content-Type: application/json
 
 {
-   "name": "Fabrícia",
-   "about": "Fabrícia é uma gata muito bonita e inteligente",
+   "name": "Chico",
+   "about": "Chico é um gato muito bonito e inteligente",
    "age": 3,
    "size": "Média",
    "energy_level": "Baixa",
    "level_of_independence": "Baixa (gosta de companhia sempre)",
    "environment": "Ambiente amplo",
-   "city": "São Paulo",
+   "city": "São Bernardo do Campo",
    "organization_id": "b747c692-626f-425d-8147-6b8b09e2adf2"
 }
 

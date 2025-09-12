@@ -1,6 +1,7 @@
 import { z } from 'zod'
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { makeCreatePetUseCase } from '../use-cases/factories/make-create-pet-use-case'
+import { makeGetPetsByCityUseCase } from '../use-cases/factories/make-get-pets-by-city-use-case'
 
 export class PetsController {
   async store(req: FastifyRequest, res: FastifyReply) {
@@ -43,5 +44,23 @@ export class PetsController {
     })
 
     return res.status(201).send({ pet })
+  }
+
+  async showByCity(req: FastifyRequest, res: FastifyReply) {
+    const schema = z.object({
+      city: z.string('City name is required.'),
+    })
+
+    const { city } = schema.parse(req.query)
+
+    const getPetsByCityUseCase = makeGetPetsByCityUseCase()
+
+    const { pets } = await getPetsByCityUseCase.execute({
+      city,
+    })
+
+    return res.send({
+      pets,
+    })
   }
 }
