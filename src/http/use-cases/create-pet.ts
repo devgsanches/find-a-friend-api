@@ -5,9 +5,9 @@ import type { Pet } from '../../../generated/prisma'
 interface ICreatePetRequest {
   name: string
   about: string
-  age: number
+  age: string
   size: string
-  energyLevel: string
+  energyLevel: number
   levelOfIndependence: string
   environment: string
   city: string

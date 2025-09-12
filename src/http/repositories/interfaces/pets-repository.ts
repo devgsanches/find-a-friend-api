@@ -1,7 +1,15 @@
 import type { Prisma, Pet } from '../../../../generated/prisma'
 
+export interface IFindByfiltersParams {
+  city: string
+  age?: string
+  energyLevel?: number
+  size?: string
+  levelOfIndependence?: string
+}
+
 export interface IPetsRepository {
   create(data: Prisma.PetUncheckedCreateInput): Promise<Pet>
   findById(id: string): Promise<Pet | null>
-  findByCity(city: string): Promise<Pet[]>
+  findByFilters(params: IFindByfiltersParams): Promise<Pet[]>
 }

@@ -3,17 +3,16 @@ POST http://localhost:3333/pets
 Content-Type: application/json
 
 {
-   "name": "Chico",
-   "about": "Chico é um gato muito bonito e inteligente",
-   "age": 3,
-   "size": "Média",
-   "energy_level": "Baixa",
-   "level_of_independence": "Baixa (gosta de companhia sempre)",
+   "name": "Zé",
+   "about": "Zé é um cachorro muito bonito e inteligente",
+   "age": "Idoso",
+   "size": "Pequenino",
+   "energy_level": 5,
+   "level_of_independence": "Médio",
    "environment": "Ambiente amplo",
-   "city": "São Bernardo do Campo",
-   "organization_id": "b747c692-626f-425d-8147-6b8b09e2adf2"
+   "city": "São Paulo",
+   "organization_id": "be0aa53a-d02f-49b3-9a85-714fa573e410"
 }
-
 ###
 
 # ORGANIZATIONS

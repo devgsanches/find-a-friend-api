@@ -6,5 +6,5 @@ const petsController = new PetsController()
 export async function petsRoutes(app: FastifyInstance) {
   app.post('/', petsController.store)
   app.get('/:id', petsController.show)
-  app.get('/', petsController.showByCity)
+  app.get('/', petsController.showByFilters)
 }

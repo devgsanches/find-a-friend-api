@@ -1,3 +1,4 @@
+import { hash } from 'bcryptjs'
 import type { Organization } from '../../../generated/prisma'
 import type { IOrganizationsRepository } from '../repositories/interfaces/organizations-repository'
 
@@ -27,10 +28,11 @@ export class CreateOrganizationUseCase {
     address,
     phone,
   }: ICreateOrganizationRequest): Promise<ICreateOrganizationResponse> {
+    const password_hash = await hash(passwordHash, 6)
     const organization = await this.organizationsRepository.create({
       responsibleName,
       email,
-      passwordHash,
+      passwordHash: password_hash,
       cep,
       city,
       address,

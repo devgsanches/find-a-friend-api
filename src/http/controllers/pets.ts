@@ -9,9 +9,9 @@ export class PetsController {
     const schema = z.object({
       name: z.string('Name is required.'),
       about: z.string('About is required.'),
-      age: z.number('Age is required.'),
+      age: z.string('Age is required.'),
       size: z.string('Size is required.'),
-      energy_level: z.string('Energy level is required.'),
+      energy_level: z.number('Energy level is required.').min(1).max(5),
       level_of_independence: z.string('Level of independence is required.'),
       environment: z.string('Environment is required.'),
       city: z.string('City is required.'),
@@ -65,9 +65,9 @@ export class PetsController {
     })
   }
 
-  async showByCity(req: FastifyRequest, res: FastifyReply) {
+  async showByFilters(req: FastifyRequest, res: FastifyReply) {
     const schema = z.object({
-      city: z.string('City name is required.'),
+      city: z.string('City is required.'),
     })
 
     const { city } = schema.parse(req.query)

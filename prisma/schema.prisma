@@ -13,13 +13,21 @@ enum Role {
   USER
 }
 
+enum Age {
+  Filhote
+  Adulto
+  Idoso
+}
+
+
+
 model Pet {
   id                  String   @id @default(uuid())
   name                String
   about               String
-  age                 String
+  age                 Age
   size                String
-  energyLevel         Int      @map("energy_level")
+  energyLevel         Int     @map("energy_level")
   levelOfIndependence String   @map("level_of_independence")
   environment         String
   city                String

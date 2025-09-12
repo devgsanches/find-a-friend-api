@@ -7,6 +7,6 @@ export async function appRoutes(fastify: FastifyInstance) {
     prefix: '/pets',
   })
   fastify.register(organizationsRoutes, {
-    prefix: '/organizations',
+    prefix: '/org',
   })
 }

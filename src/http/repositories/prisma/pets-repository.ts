@@ -1,7 +1,10 @@
 import type { Pet, Prisma } from '../../../../generated/prisma'
 import { prisma } from '../../../database/prisma'
 // import type { Prisma } from 'generated/prisma'
-import type { IPetsRepository } from '../interfaces/pets-repository'
+import type {
+  IFindByfiltersParams,
+  IPetsRepository,
+} from '../interfaces/pets-repository'
 
 export class PrismaPetsRepository implements IPetsRepository {
   async create(data: Prisma.PetUncheckedCreateInput) {
@@ -26,16 +29,30 @@ export class PrismaPetsRepository implements IPetsRepository {
     return pet
   }
 
-  async findByCity(city: string) {
+  async findByFilters(params: IFindByfiltersParams) {
     const pets = await prisma.pet.findMany({
       where: {
         city: {
-          contains: city,
+          contains: params.city,
+          mode: 'insensitive',
+        },
+        age: {
+          contains: params.age,
+          mode: 'insensitive',
+        },
+        energyLevel: {
+          equals: params.energyLevel,
+        },
+        size: {
+          contains: params.size,
+          mode: 'insensitive',
+        },
+        levelOfIndependence: {
+          contains: params.levelOfIndependence,
           mode: 'insensitive',
         },
       },
     })
-
     return pets
   }
 }
