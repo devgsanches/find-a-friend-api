@@ -20,7 +20,6 @@ enum Age {
 }
 
 
-
 model Pet {
   id                  String   @id @default(uuid())
   name                String
@@ -38,7 +37,34 @@ model Pet {
   // relation with organization
   organization Organization @relation(fields: [organizationId], references: [id])
 
+  petImages PetImage[]
+  adoptionRequirements AdoptionRequirement[]
+
   @@map("pets")
+}
+
+model PetImage {
+  id        String @id @default(uuid())
+  url       String
+  petId     String @map("pet_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  pet Pet @relation(fields: [petId], references: [id])
+
+  @@map("pet_images")
+}
+
+model AdoptionRequirement {
+  id        String @id @default(uuid())
+  description String
+  petId     String @map("pet_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  pet Pet @relation(fields: [petId], references: [id])
+
+  @@map("adoption_requirements")
 }
 
 model Organization {
@@ -58,6 +84,8 @@ model Organization {
 
   @@map("organizations")
 }
+
+
 
 model User {
   id        String @id @default(uuid())

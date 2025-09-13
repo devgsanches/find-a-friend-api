@@ -1,11 +1,14 @@
 <!-- FindAFriend API -->
+
 # Requisitos Funcionais (RF's)
 
 - [x] Deve ser possível cadastrar um pet
 - [x] Deve ser possível listar todos os pets disponíveis para adoção em uma cidade
 - [x] Deve ser possível filtrar pets por suas características // pelos query params (optional)
 - [x] Deve ser possível visualizar detalhes de um pet para adoção
-- [ ] Deve ser possível se cadastrar como uma ORG @@FIX-ME: puxar city automaticamente pelo cep informado > API
+- [x] Deve ser possível cadastrar requisitos de adoção para um pet
+- [x] Deve ser possível cadastrar imagens de um pet
+- [x] Deve ser possível se cadastrar como uma ORG
 - [x] Deve ser possível realizar login como uma ORG
 - [x] Deve ser possível realizar login como um usuário
 
@@ -16,7 +19,7 @@
 - [x] Um pet deve estar ligado a uma ORG
 - [x] O usuário que quer adotar, entrará em contato com a ORG via WhatsApp
 - [x] Todos os filtros, além da cidade, são opcionais
-- [ ] Para uma ORG acessar a aplicação como admin, ela precisa estar logada @@FIX-ME: add role in orgs
+- [x] Para uma ORG acessar a aplicação como admin, ela precisa estar logada
 
 # Requisitos Não-Funcionais (RNF's)
 
