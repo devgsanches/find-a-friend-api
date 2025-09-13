@@ -23,7 +23,7 @@ export class OrgAuthenticateUseCase {
     const org = await this.organizationsRepository.findByEmail(email)
 
     if (!org) {
-      throw new ResourceNotFoundError('Organization not found.')
+      throw new InvalidCredentialsError()
     }
 
     const passwordMatch = await compare(password, org.passwordHash)

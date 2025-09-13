@@ -9,7 +9,7 @@ datasource db {
 }
 
 enum Role {
-  ADMIN
+  ORG
   USER
 }
 
@@ -46,6 +46,7 @@ model Organization {
   responsibleName String @map("responsible_name")
   email           String @unique
   passwordHash    String @map("password_hash")
+  role            Role   @default(ORG)
   cep             String
   city            String
   address         String
@@ -56,4 +57,16 @@ model Organization {
   pets Pet[]
 
   @@map("organizations")
+}
+
+model User {
+  id        String @id @default(uuid())
+  name      String
+  email     String @unique
+  passwordHash  String @map("password_hash")
+  role          Role   @default(USER)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
 }

@@ -28,6 +28,7 @@
     "@fastify/cors": "^11.1.0",
     "@fastify/jwt": "^10.0.0",
     "@prisma/client": "^6.16.0",
+    "axios": "^1.12.1",
     "bcryptjs": "^3.0.2",
     "dotenv": "^17.2.2",
     "fastify": "^5.6.0",

@@ -1,11 +1,11 @@
 import type { IPetsRepository } from '../repositories/interfaces/pets-repository'
 
-import type { Pet } from '../../../generated/prisma'
+import type { Age, Pet } from '../../../generated/prisma'
 
 interface ICreatePetRequest {
   name: string
   about: string
-  age: string
+  age: Age
   size: string
   energyLevel: number
   levelOfIndependence: string

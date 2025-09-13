@@ -1,5 +1,4 @@
 <!-- FindAFriend API -->
-
 # Requisitos Funcionais (RF's)
 
 - [x] Deve ser possível cadastrar um pet
@@ -8,7 +7,7 @@
 - [x] Deve ser possível visualizar detalhes de um pet para adoção
 - [ ] Deve ser possível se cadastrar como uma ORG @@FIX-ME: puxar city automaticamente pelo cep informado > API
 - [x] Deve ser possível realizar login como uma ORG
-- [ ] Deve ser possível realizar login como um usuário
+- [x] Deve ser possível realizar login como um usuário
 
 # Regras de Negócio (RN's)
 

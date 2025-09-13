@@ -1,8 +1,8 @@
-import type { Prisma, Pet } from '../../../../generated/prisma'
+import type { Prisma, Pet, Age } from '../../../../generated/prisma'
 
 export interface IFindByfiltersParams {
   city: string
-  age?: string
+  age?: Age
   energyLevel?: number
   size?: string
   levelOfIndependence?: string

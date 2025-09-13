@@ -37,8 +37,7 @@ export class PrismaPetsRepository implements IPetsRepository {
           mode: 'insensitive',
         },
         age: {
-          contains: params.age,
-          mode: 'insensitive',
+          equals: params.age,
         },
         energyLevel: {
           equals: params.energyLevel,

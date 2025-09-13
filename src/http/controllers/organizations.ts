@@ -9,13 +9,11 @@ export class OrganizationsController {
       responsible_name: z.string('Responsible name is required.'),
       email: z.string('Email is required.'),
       password: z.string('Password is required.'),
-      cep: z.string('CEP is required.'),
-      city: z.string('City is required.'),
+      cep: z.string('CEP is required.').min(8).max(8),
       address: z.string('Address is required.'),
       phone: z.string('Phone is required.'),
     })
-
-    const { responsible_name, email, password, cep, city, address, phone } =
+    const { responsible_name, email, password, cep, address, phone } =
       schema.parse(req.body)
 
     const createOrganizationUseCase = makeCreateOrganizationUseCase()
@@ -25,7 +23,6 @@ export class OrganizationsController {
       email,
       passwordHash: password,
       cep,
-      city,
       address,
       phone,
     })
