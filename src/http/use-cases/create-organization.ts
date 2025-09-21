@@ -6,7 +6,7 @@ import axios from 'axios'
 interface ICreateOrganizationRequest {
   responsibleName: string
   email: string
-  passwordHash: string
+  password: string
   cep: string
   address: string
   phone: string
@@ -22,12 +22,12 @@ export class CreateOrganizationUseCase {
   async execute({
     responsibleName,
     email,
-    passwordHash,
+    password,
     cep,
     address,
     phone,
   }: ICreateOrganizationRequest): Promise<ICreateOrganizationResponse> {
-    const password_hash = await hash(passwordHash, 6)
+    const password_hash = await hash(password, 6)
 
     const response = await axios.get(`https://viacep.com.br/ws/${cep}/json/`)
     const city = response.data.localidade

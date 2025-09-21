@@ -1,3 +1,4 @@
+import { ResourceAlreadyExistsError } from '@/http/use-cases/errors/resource-already-exists-error'
 import type { Pet, Prisma } from '../../../../generated/prisma'
 import { prisma } from '../../../database/prisma'
 // import type { Prisma } from 'generated/prisma'

@@ -1,0 +1,7 @@
+export class ResourceAlreadyExistsError extends Error {
+  constructor(resource: string) {
+    super(
+      `${resource} already exists. Please try again with a different email.`
+    )
+  }
+}

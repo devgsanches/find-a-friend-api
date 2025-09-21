@@ -3,19 +3,20 @@
   "_version": "22.0.0",
 
   "compilerOptions": {
-    "lib": [
-      "es2024",
-      "ESNext.Array",
-      "ESNext.Collection",
-      "ESNext.Iterator",
-      "DOM"
-    ],
-    "module": "nodenext",
+    "lib": ["es2024", "ESNext.Array", "ESNext.Collection", "ESNext.Iterator"],
+    "module": "esnext",
     "target": "es2022",
-
+    "moduleResolution": "bundler",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node16"
+    "verbatimModuleSyntax": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   }
 }
