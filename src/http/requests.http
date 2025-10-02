@@ -3,15 +3,15 @@ POST http://localhost:3333/pets
 Content-Type: application/json
 
 {
-   "name": "Zé",
-   "about": "Zé é um cachorro muito bonito e inteligente",
+   "name": "Yara",
+   "about": "Yara é uma cachorra muito bonita e inteligente",
    "age": "Idoso",
    "size": "Pequenino",
    "energy_level": 5,
    "level_of_independence": "Médio",
    "environment": "Ambiente amplo",
    "city": "São Paulo",
-   "organization_id": "be0aa53a-d02f-49b3-9a85-714fa573e410"
+   "organization_id": "0012a511-25dc-4c29-8aa9-b3bfa37edeb3"
 }
 ###
 

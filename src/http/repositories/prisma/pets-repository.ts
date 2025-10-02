@@ -21,6 +21,26 @@ export class PrismaPetsRepository implements IPetsRepository {
       where: {
         id,
       },
+      include: {
+        petImages: true,
+      },
+    })
+
+    if (!pet) {
+      return null
+    }
+
+    return pet
+  }
+
+  async findByName(name: string) {
+    const pet = await prisma.pet.findFirst({
+      where: {
+        name,
+      },
+      include: {
+        petImages: true,
+      },
     })
 
     if (!pet) {
@@ -37,6 +57,9 @@ export class PrismaPetsRepository implements IPetsRepository {
           contains: params.city,
           mode: 'insensitive',
         },
+        name: {
+          equals: params.name,
+        },
         age: {
           equals: params.age,
         },
@@ -51,6 +74,9 @@ export class PrismaPetsRepository implements IPetsRepository {
           contains: params.levelOfIndependence,
           mode: 'insensitive',
         },
+      },
+      include: {
+        petImages: true,
       },
     })
     return pets

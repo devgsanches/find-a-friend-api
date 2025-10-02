@@ -1,7 +1,7 @@
 import { z } from 'zod'
-import { FastifyRequest, FastifyReply } from 'fastify'
+import type { FastifyRequest, FastifyReply } from 'fastify'
 import { makeCreatePetUseCase } from '../use-cases/factories/make-create-pet-use-case'
-import { makeGetPetsByCityUseCase } from '../use-cases/factories/make-get-pets-by-city-use-case'
+import { makeGetPetsByFiltersUseCase } from '../use-cases/factories/make-get-pets-by-city-use-case'
 import { makeGetPetByIdUseCase } from '../use-cases/factories/make-get-pet-by-id-use-case'
 import { Age } from '../../../generated/prisma'
 
@@ -69,14 +69,16 @@ export class PetsController {
   async showByFilters(req: FastifyRequest, res: FastifyReply) {
     const schema = z.object({
       city: z.string('City is required.'),
+      name: z.string().optional(),
     })
 
-    const { city } = schema.parse(req.query)
+    const { city, name } = schema.parse(req.query)
 
-    const getPetsByCityUseCase = makeGetPetsByCityUseCase()
+    const getPetsByFiltersUseCase = makeGetPetsByFiltersUseCase()
 
-    const { pets } = await getPetsByCityUseCase.execute({
+    const { pets } = await getPetsByFiltersUseCase.execute({
       city,
+      name,
     })
 
     return res.send({

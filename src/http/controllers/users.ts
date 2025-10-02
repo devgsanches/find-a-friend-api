@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { FastifyRequest, FastifyReply } from 'fastify'
+import type { FastifyRequest, FastifyReply } from 'fastify'
 import { makeOrgAuthenticateUseCase } from '../use-cases/factories/make-org-authenticate-use-case'
 import { makeUserAuthenticateUseCase } from '../use-cases/factories/make-user-authenticate-use-case'
 import { makeCreateUserUseCase } from '../use-cases/factories/make-create-user-use-case'

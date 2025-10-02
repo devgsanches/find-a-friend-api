@@ -4,6 +4,7 @@ import type { Age, Pet } from '../../../generated/prisma'
 
 interface ICreatePetRequest {
   city: string
+  name?: string
   age?: Age
   energyLevel?: number
   size?: string
@@ -19,6 +20,7 @@ export class GetPetsByFiltersUseCase {
 
   async execute({
     city,
+    name,
     age,
     energyLevel,
     size,
@@ -26,6 +28,7 @@ export class GetPetsByFiltersUseCase {
   }: ICreatePetRequest): Promise<ICreatePetResponse> {
     const pets = await this.petsRepository.findByFilters({
       city,
+      name,
       age,
       energyLevel,
       size,

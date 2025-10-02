@@ -1,9 +1,9 @@
 import { PrismaPetsRepository } from '../../repositories/prisma/pets-repository'
-import { GetPetsByCityUseCase } from '../get-pets-by-filters'
+import { GetPetsByFiltersUseCase } from '../get-pets-by-filters'
 
-export function makeGetPetsByCityUseCase() {
+export function makeGetPetsByFiltersUseCase() {
   const petsRepository = new PrismaPetsRepository()
-  const findPetsByCityUseCase = new GetPetsByCityUseCase(petsRepository)
+  const findPetsByFiltersUseCase = new GetPetsByFiltersUseCase(petsRepository)
 
-  return findPetsByCityUseCase
+  return findPetsByFiltersUseCase
 }

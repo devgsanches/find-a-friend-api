@@ -2,7 +2,9 @@ import type { Organization, Prisma, Role } from 'generated/prisma'
 import type { IOrganizationsRepository } from '../interfaces/organizations-repository'
 import { randomUUID } from 'node:crypto'
 
-export class InMemoryOrganizationsRepository implements IOrganizationsRepository {
+export class InMemoryOrganizationsRepository
+  implements IOrganizationsRepository
+{
   private organizations: Organization[] = []
 
   async create(data: Prisma.OrganizationCreateInput) {
@@ -24,8 +26,19 @@ export class InMemoryOrganizationsRepository implements IOrganizationsRepository
     return organization
   }
 
+  async findById(id: string) {
+    const orgExists = this.organizations.find(org => org.id === id)
+
+    if (!orgExists) {
+      return null
+    }
+
+    return orgExists
+    throw new Error('Method not implemented.')
+  }
+
   async findByEmail(email: string) {
-    const orgExists = this.organizations.find((org) => org.email === email)
+    const orgExists = this.organizations.find(org => org.email === email)
 
     if (!orgExists) {
       return null

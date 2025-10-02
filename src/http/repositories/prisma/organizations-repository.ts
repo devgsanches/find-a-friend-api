@@ -4,6 +4,7 @@ import type { IOrganizationsRepository } from '../interfaces/organizations-repos
 // import type { Prisma } from 'generated/prisma'
 
 export class PrismaOrganizationsRepository implements IOrganizationsRepository {
+  
   async create(data: Prisma.OrganizationCreateInput) {
     const organization = await prisma.organization.create({
       data,
@@ -16,6 +17,20 @@ export class PrismaOrganizationsRepository implements IOrganizationsRepository {
     const org = await prisma.organization.findUnique({
       where: {
         email,
+      },
+    })
+
+    if (!org) {
+      return null
+    }
+
+    return org
+  }
+
+  async findById(id: string): Promise<Organization | null> {
+    const org = await prisma.organization.findUnique({
+      where: {
+        id,
       },
     })
 

@@ -5,16 +5,16 @@ import { hash } from 'bcryptjs'
 import { InvalidCredentialsError } from '../errors/invalid-credentials-error'
 
 describe('Organization Authenticate Use Case', () => {
-  let usersRepository: InMemoryOrganizationsRepository
+  let organizationsRepository: InMemoryOrganizationsRepository
   let sut: OrgAuthenticateUseCase
 
   beforeEach(() => {
-    usersRepository = new InMemoryOrganizationsRepository()
-    sut = new OrgAuthenticateUseCase(usersRepository)
+    organizationsRepository = new InMemoryOrganizationsRepository()
+    sut = new OrgAuthenticateUseCase(organizationsRepository)
   })
 
   it('should be able authenticate a organization', async () => {
-    await usersRepository.create({
+    await organizationsRepository.create({
       responsibleName: 'ORG1',
       email: 'org1@example.com',
       passwordHash: await hash('123456', 6),
@@ -57,7 +57,7 @@ describe('Organization Authenticate Use Case', () => {
   })
 
   it('should not be possible to authenticate with an incorrect password', async () => {
-    await usersRepository.create({
+    await organizationsRepository.create({
         responsibleName: 'ORG1',
         email: 'org1@example.com',
         passwordHash: await hash('123456', 6),

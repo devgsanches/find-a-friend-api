@@ -1,7 +1,8 @@
 import { z } from 'zod'
-import { FastifyRequest, FastifyReply } from 'fastify'
+import type { FastifyRequest, FastifyReply } from 'fastify'
 import { makeCreateOrganizationUseCase } from '../use-cases/factories/make-create-organization-use-case'
 import { makeOrgAuthenticateUseCase } from '../use-cases/factories/make-org-authenticate-use-case'
+import { makeGetOrgByIdUseCase } from '../use-cases/factories/make-get-org-by-id-use-case'
 
 export class OrganizationsController {
   async store(req: FastifyRequest, res: FastifyReply) {
@@ -9,7 +10,7 @@ export class OrganizationsController {
       responsible_name: z.string('Responsible name is required.'),
       email: z.string('Email is required.'),
       password: z.string('Password is required.'),
-      cep: z.string('CEP is required.').min(8).max(8),
+      cep: z.coerce.string('CEP is required.').min(8),
       address: z.string('Address is required.'),
       phone: z.string('Phone is required.'),
     })
@@ -21,7 +22,7 @@ export class OrganizationsController {
     const { organization } = await createOrganizationUseCase.execute({
       responsibleName: responsible_name,
       email,
-      passwordHash: password,
+      password,
       cep,
       address,
       phone,
@@ -48,9 +49,9 @@ export class OrganizationsController {
     })
 
     const token = await res.jwtSign(
-      // {
-      //   role: org.role,
-      // },
+      {
+        role: org.role,
+      },
       {
         sign: {
           sub: org.id,
@@ -59,9 +60,9 @@ export class OrganizationsController {
     )
 
     const refreshToken = await res.jwtSign(
-      // {
-      //   role: org.role,
-      // },
+      {
+        role: org.role,
+      },
       {
         sign: {
           sub: org.id,
@@ -81,5 +82,20 @@ export class OrganizationsController {
       .send({
         token,
       })
+  }
+
+  async show(req: FastifyRequest, res: FastifyReply) {
+    const schema = z.object({
+      id: z.string(),
+    })
+    const { id } = schema.parse(req.params)
+
+    const getOrgByIdUseCase = makeGetOrgByIdUseCase()
+
+    const { org } = await getOrgByIdUseCase.execute({
+      id,
+    })
+
+    return res.status(201).send({ org })
   }
 }
